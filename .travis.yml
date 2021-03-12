@@ -1,0 +1,23 @@
+sudo: required
+services:
+  -docker
+
+before_install:
+  - docker build -t sulagna/react-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run sulagna/react-test npm test -- --coverage
+  #-- -coverage makes the testing stop once all the tests have been run
+
+after_success:
+  - docker build -t sulagna/multi-client ./client
+  - docker build -t sulagna/multi-nginx ./nginx
+  - docker build -t sulagna/multi-server ./server
+  - docker build -t sulagna/multi-worker ./worker
+  #Log in to docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  #take those images and push them to docker hub
+  - docker push sulagna/multi-client
+  - docker push sulagna/multi-nginx
+  - docker push sulagna/multi-server
+  - docker push sulagna/multi-worker
