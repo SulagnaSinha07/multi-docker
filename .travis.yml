@@ -6,8 +6,8 @@ before_install:
   - docker build -t sulagna/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run sulagna/react-test npm test -- --coverage
-  #-- -coverage makes the testing stop once all the tests have been run
+  - docker run -e CI=true sulagna/react-test npm test
+    #-- -coverage makes the testing stop once all the tests have been run
 
 after_success:
   - docker build -t sulagna/multi-client ./client
