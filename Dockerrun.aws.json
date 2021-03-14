@@ -1,5 +1,5 @@
 {
-	"os": "linux",
+
 	"language": "generic",
 	"AWSEBDockerrunVersion": 2,
 	"containerDefinitions": [
@@ -37,7 +37,6 @@
 				}],
 			"links": ["client", "server"]
 		}
-	],
-	"dist": "xenial"
+	]
 	
 }
