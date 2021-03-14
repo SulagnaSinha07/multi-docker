@@ -1,4 +1,6 @@
 {
+	"os": "linux",
+	"language": "generic",
 	"AWSEBDockerrunVersion": 2,
 	"containerDefinitions": [
 		{
@@ -27,14 +29,15 @@
 			"image": "sulagnasinha/multi-nginx",
 			"hostname": "nginx",
 			"essential": true,
+			"memory": 200,
 			"portMappings": [
 				{
 					"hostPort": 80,
 					"containerPort": 80
 				}],
-			"links": ["client", "server"],
-			"memory": 200
+			"links": ["client", "server"]
 		}
-	]
+	],
+	"dist": "xenial"
 	
 }
