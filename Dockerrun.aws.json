@@ -5,19 +5,22 @@
 			"name": "client",
 			"image": "sulagnasinha/multi-client",
 			"hostname": "client",
-			"essential": false
+			"essential": false,
+			"memory": 200
 		},
 		{
 			"name": "server",
 			"image": "sulagnasinha/multi-server",
 			"hostname": "api",
-			"essential": false
+			"essential": false,
+			"memory": 200
 		},
 		{
 			"name": "worker",
 			"image": "sulagnasinha/multi-worker",
 			"hostname": "worker",
-			"essential": false
+			"essential": false,
+			"memory": 200
 		},
 		{
 			"name": "nginx",
@@ -29,7 +32,8 @@
 					"hostPort": 80,
 					"containerPort": 80
 				}],
-			"links": ["client", "server"]
+			"links": ["client", "server"],
+			"memory": 200
 		}
 	]
 	
